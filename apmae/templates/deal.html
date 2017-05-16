@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<meta charset="utf-8">
+  	<title>M&A Status Prediction</title>
+  </head>
+  <body>
+  	<h1>M&A Status Prediction</h1>
+  	<p>To assist you make an educated guess of the success rate of your M&A</p>
+  	<p>Tell us about your deal</p>
+  	<br>
+  	<form action="." method="POST">
+  		<p>1. What's the type of your deal?</p>
+  		<select name="deal type">
+  			<option value="Acquisition" selected>Acquisition</option>
+  			<option value="Institutional buy-out">Institutional buy-out</option>
+  			<option value="Joint-venture">Joint-venture</option>
+  			<option value="MBI / MBO">MBI / MBO</option>
+  			<option value="Management buy-in">Management buy-in</option>
+  			<option value="Management buy-out">Management buy-out</option>
+  			<option value="Merger">Merger</option>
+  		</select>
+  		<br>
+  		<p>2. What's the method of payment?</p>
+  		<select name="payment method">
+  			<option value="Cash" selected>Cash</option>
+  			<option value="Cash assumed">Cash assumed</option>
+  			<option value="Converted Debt">Converted Debt</option>
+  			<option value="Debt assumed">Debt assumed</option>
+  			<option value="Deferred payment">Deferred payment</option>
+  			<option value="Earn-out">Earn-out</option>
+  			<option value="Loan notes">Loan notes</option>
+  			<option value="Other">Other</option>
+  			<option value="Shares">Shares</option>
+		</select>
+		<br>
+  		<p>3. How much final stake would you hold in the target company after this M&A?</p>
+  		<p>[Please enter a percentage point between 0 to 100.00000]</p>
+  		<input type="number" name="fstake">
+  		<br>
+  		<p>4. What's your major sector as the acquiror?</p>
+  		<select name="acquiror major sector">
+  			<option value="Primary Sector (agriculture, mining, etc.)" selected>Primary Sector (agriculture, mining, etc.)</option>
+  			<option value="Food, beverages, tobacco">Food, beverages, tobacco</option>
+  			<option value="Textiles, wearing apparel, leather">Textiles, wearing apparel, leather</option>
+  			<option value="Wood, cork, paper">Wood, cork, paper</option>
+  			<option value="Publishing, printing">Publishing, printing</option>
+  			<option value="Chemicals, rubber, plastics, non-metallic products">Chemicals, rubber, plastics, non-metallic products</option>
+  			<option value="Metals&metal products">Metals&metal products</option>
+  			<option value="Machinery, equipment, furniture, recycling">Machinery, equipment, furniture, recycling</option>
+  			<option value="Gas">Gas</option>
+  			<option value="Water">Water</option>
+  			<option value="Electricity">Electricity</option>
+  			<option value="Construction">Construction</option>
+  			<option value="Wholesale&retail trade">Wholesale&retail trade</option>
+  			<option value="Hotels&restaurants">Hotels&restaurants</option>
+  			<option value="Transport">Transport</option>
+  			<option value="Post and telecommunications">Post and telecommunications</option>
+  			<option value="Banks">Banks</option>
+  			<option value="Insurance companies">Insurance companies</option>
+  			<option value="Other services">Other services</option>
+  			<option value="Public administration and defence">Public administration and defence</option>
+  			<option value="Education">Education</option>
+  			<option value="Health">Health</option>
+		</select>
+		<br>
+  		<p>5. What's the target company's major sector?</p>
+  		<select name="acquiror major sector">
+  			<option value="Primary Sector (agriculture, mining, etc.)" selected>Primary Sector (agriculture, mining, etc.)</option>
+  			<option value="Food, beverages, tobacco">Food, beverages, tobacco</option>
+  			<option value="Textiles, wearing apparel, leather">Textiles, wearing apparel, leather</option>
+  			<option value="Wood, cork, paper">Wood, cork, paper</option>
+  			<option value="Publishing, printing">Publishing, printing</option>
+  			<option value="Chemicals, rubber, plastics, non-metallic products">Chemicals, rubber, plastics, non-metallic products</option>
+  			<option value="Metals&metal products">Metals&metal products</option>
+  			<option value="Machinery, equipment, furniture, recycling">Machinery, equipment, furniture, recycling</option>
+  			<option value="Gas">Gas</option>
+  			<option value="Water">Water</option>
+  			<option value="Electricity">Electricity</option>
+  			<option value="Construction">Construction</option>
+  			<option value="Wholesale&retail trade">Wholesale&retail trade</option>
+  			<option value="Hotels&restaurants">Hotels&restaurants</option>
+  			<option value="Transport">Transport</option>
+  			<option value="Post and telecommunications">Post and telecommunications</option>
+  			<option value="Banks">Banks</option>
+  			<option value="Insurance companies">Insurance companies</option>
+  			<option value="Other services">Other services</option>
+  			<option value="Public administration and defence">Public administration and defence</option>
+  			<option value="Education">Education</option>
+  			<option value="Health">Health</option>
+		</select>
+		<br>
+		<br>
+		<input type="submit" name="submit" value="Send">
+		<br>
+	</form>
+  </body>
+</html>
