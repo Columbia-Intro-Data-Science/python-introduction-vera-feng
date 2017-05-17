@@ -7,6 +7,9 @@ from sklearn.tree import DecisionTreeRegressor, DecisionTreeClassifier
 from sklearn.cross_validation import train_test_split
 import matplotlib.pyplot as plt
 import numpy as np
+import csv
+from shutil import copyfile
+import os
 
 # Source
 datafile = "data.txt"
@@ -65,15 +68,30 @@ def input_file(filename):
     return (X, y)
 
 def ask_for_user_input(filename, x1, x2, x3, x4, x5):
-
-    #append the user input to the original dataframe
-    user_input = [x1, x2, x3, x4, x5, "Completed"]
     
-    df2 = pd.read_csv(filename, sep="\t")
+    filename2 = "data2.txt"
+    
+    # append the user input to the file 
+    # couldn't concatenate using df2.loc[len(df2)]= user_input for some reason
+    # suspecting it's a version issue but not positive 
+    copyfile(filename, filename2)
+    
+    urow = ['1', '91314', '0', '0', x1, x2, x3, x4, x5, 'Completed']
+    with open(filename2,'a') as csvfile:
+    	csvfile.write("\n")
+    	fwriter = csv.writer(csvfile, delimiter="\t")
+    	fwriter.writerow(urow)
+    
+    #read data		
+    df2 = pd.read_csv(filename2, sep="\t")
+    
+    # Delete filename2
+    os.remove(filename2)
+    
+    #drop irrelevant columns
     df2 = df2.drop(["Mark", "Deal Number", "Acquiror name", "Target name"],1)
     df2 = df2.dropna(how='any')
-    df2.loc[len(df2)]= user_input
-    
+
     df2["Deal status"] = df2["Deal status"].astype("category")
     df2["Deal status"] = df2["Deal status"].apply(convert_y)
     
@@ -86,11 +104,9 @@ def ask_for_user_input(filename, x1, x2, x3, x4, x5):
 
     df_ohe2 = pd.get_dummies(df2, columns=categoricals)
     
-    
     #create X and y variables
     y2 = df_ohe2["Deal status"]
     X2 = df_ohe2.drop(['Deal status'],1)
-    
     X_test = X2.tail(1)
 
     return X_test
@@ -102,8 +118,8 @@ def optimal_regression(input_data):
     y = input_data[1]
     
     #split the dataset into training, validate & test datasets
-    X_model, X_test, y_model, y_test = train_test_split(X, y, test_size=0.2, random_state=5)
-    X_train, X_validate, y_train, y_validate = train_test_split(X_model, y_model, test_size=0.2, random_state=5)
+    X_model, X_test, y_model, y_test = train_test_split(X, y, test_size=0.2, random_state=40)
+    X_train, X_validate, y_train, y_validate = train_test_split(X_model, y_model, test_size=0.2, random_state=40)
     
     #find out the optimal tree depth
     #using train and validate datasets
@@ -185,8 +201,7 @@ def my_form_post():
 	
 	# Read file, return tuple
     input_data = input_file(datafile)
-    print(input_data[0].shape)
-	
+    
 	# Train decision tree, return optimal depth and its accuracy
     regression = optimal_regression(input_data)
     n_opt= regression[0]
